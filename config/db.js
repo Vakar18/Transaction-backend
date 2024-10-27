@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
 
 const connectDB = async () => {
+    const dbURI = process.env.MONGODB_URI || "mongodb://localhost:27017/transactionsDB"; 
+
     try {
-        await mongoose.connect("mongodb://localhost:27017/transactionsDB", {
+        await mongoose.connect(dbURI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
