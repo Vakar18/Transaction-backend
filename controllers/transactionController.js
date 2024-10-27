@@ -148,7 +148,10 @@ exports.getBarChart = async (req, res) => {
       }));
   
       // Send the result back in the response
-      return res.status(200).json(result);
+      if (res) {
+        return res.status(200).json(result);
+      }
+      return result;
     } catch (error) {
       console.error("Error fetching bar chart data:", error.stack || error);
       return res.status(500).json({ message: 'Error fetching bar chart data', error: error.message || error });
